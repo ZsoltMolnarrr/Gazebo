@@ -3,13 +3,13 @@
   "id": "gazebo",
   "version": "${version}",
   "name": "Gazebo",
-  "description": "Gazebo Village structures",
+  "description": "Find gazebos in villages, hosting small spell libraries.",
   "authors": [
     "Daedelus"
   ],
   "contact": {
-    "repo": "https://github.com/ZsoltMolnarrr/Paladins",
-    "issues": "https://github.com/ZsoltMolnarrr/Paladins/issues"
+    "repo": "https://github.com/ZsoltMolnarrr/Gazebo",
+    "issues": "https://github.com/ZsoltMolnarrr/Gazebo/issues"
   },
   "license": "All Rights Reserved",
   "icon": "icon.png",
