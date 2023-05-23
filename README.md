@@ -1,3 +1,3 @@
 ![Title](.github/title.png)
 
-🔨 Protect and heal your friends as a Paladin!
+⛲️ Find gazebos in villages, hosting small spell libraries.
