@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "gazebo",
+  "version": "${version}",
+  "name": "Gazebo",
+  "description": "Gazebo Village structures",
+  "authors": [
+    "Daedelus"
+  ],
+  "contact": {
+    "repo": "https://github.com/ZsoltMolnarrr/Paladins",
+    "issues": "https://github.com/ZsoltMolnarrr/Paladins/issues"
+  },
+  "license": "All Rights Reserved",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.gazebo.fabric.client.FabricClientMod"
+    ],
+    "main": [
+      "net.gazebo.fabric.FabricMod"
+    ],
+    "modmenu": [
+      "net.spell_engine.fabric.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "gazebo.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=1.19.0 <1.19.3",
+    "fabricloader": ">=0.14.0",
+    "spell_engine": ">=${spell_engine_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/KN9b3pjFTM"
+      }
+    }
+  }
+}
