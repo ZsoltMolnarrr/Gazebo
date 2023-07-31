@@ -40,6 +40,7 @@ dependencies {
     shadowCommon(implementation("com.github.ZsoltMolnarrr:TinyConfig:${project.tiny_config_version}"))
 
     modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-fabric")
+    implementation("com.github.LlamaLad7:MixinExtras:${project.mixin_extras_version}")
 }
 
 processResources {
