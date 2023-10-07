@@ -20,9 +20,6 @@
     ],
     "main": [
       "net.gazebo.fabric.FabricMod"
-    ],
-    "modmenu": [
-      "net.spell_engine.fabric.client.ModMenuIntegration"
     ]
   },
   "mixins": [
