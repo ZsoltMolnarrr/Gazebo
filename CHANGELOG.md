@@ -1,3 +1,7 @@
+# 1.1.0
+
+- Limit Gazebos to 1 per village, thanks to the Structure Pool API
+
 # 1.0.2
 
 - Remove mod menu settings link
