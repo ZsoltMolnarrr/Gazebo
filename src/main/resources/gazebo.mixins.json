@@ -4,7 +4,6 @@
   "package": "net.gazebo.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "worldgen.StructurePoolAccessor"
   ],
   "client": [
   ],

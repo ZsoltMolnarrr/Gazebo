@@ -16,10 +16,9 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "net.gazebo.fabric.client.FabricClientMod"
     ],
     "main": [
-      "net.gazebo.fabric.FabricMod"
+      "net.gazebo.GazeboMod"
     ]
   },
   "mixins": [
@@ -28,7 +27,8 @@
   "depends": {
     "minecraft": ">=1.20.0",
     "fabricloader": ">=0.14.0",
-    "spell_engine": "*"
+    "spell_engine": "*",
+    "structure_pool_api": "*"
   },
   "custom": {
     "modmenu": {
