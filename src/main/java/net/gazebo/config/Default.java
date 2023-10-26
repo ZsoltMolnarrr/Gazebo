@@ -11,7 +11,7 @@ public class Default {
 
     static {
         villages = new StructurePoolConfig();
-        var weight = 3;
+        var weight = 5;
         var limit = 1;
         villages.entries = new ArrayList<>(List.of(
                 new StructurePoolConfig.Entry("minecraft:village/desert/houses", new ArrayList<>(Arrays.asList(
@@ -24,7 +24,7 @@ public class Default {
                         new StructurePoolConfig.Entry.Structure("gazebo:village/plains/gazebo", weight, limit)
                 ))),
                 new StructurePoolConfig.Entry("minecraft:village/taiga/houses", new ArrayList<>(Arrays.asList(
-                        new StructurePoolConfig.Entry.Structure("gazebo:village/taiga/gazebo", weight, limit)
+                        new StructurePoolConfig.Entry.Structure("gazebo:village/taiga/gazebo", weight, 3)
                 ))),
                 new StructurePoolConfig.Entry("minecraft:village/snowy/houses", new ArrayList<>(Arrays.asList(
                         new StructurePoolConfig.Entry.Structure("gazebo:village/snowy/gazebo", weight, limit)
