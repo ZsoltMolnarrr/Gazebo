@@ -24,12 +24,11 @@ public class Default {
                         new StructurePoolConfig.Entry.Structure("gazebo:village/plains/gazebo", weight, limit)
                 ))),
                 new StructurePoolConfig.Entry("minecraft:village/taiga/houses", new ArrayList<>(Arrays.asList(
-                        new StructurePoolConfig.Entry.Structure("gazebo:village/taiga/gazebo", weight, 3)
+                        new StructurePoolConfig.Entry.Structure("gazebo:village/taiga/gazebo", 3, limit)
                 ))),
                 new StructurePoolConfig.Entry("minecraft:village/snowy/houses", new ArrayList<>(Arrays.asList(
                         new StructurePoolConfig.Entry.Structure("gazebo:village/snowy/gazebo", weight, limit)
                 )))
         ));
     }
-
 }
