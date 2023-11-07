@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "gazebo",
   "version": "${version}",
-  "name": "Gazebos",
+  "name": "Gazebos (RPG Series)",
   "description": "Find gazebos in villages, hosting small spell libraries.",
   "authors": [
     "Daedelus"
