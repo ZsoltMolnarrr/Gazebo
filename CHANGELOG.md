@@ -1,3 +1,7 @@
+# 1.1.3
+
+- Mark mod as server-side
+
 # 1.1.2
 
 - Update name for Mod Menu
