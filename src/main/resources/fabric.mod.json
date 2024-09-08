@@ -13,7 +13,7 @@
   },
   "license": "All Rights Reserved",
   "icon": "icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "client": [
     ],

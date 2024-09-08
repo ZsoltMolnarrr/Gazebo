@@ -1,6 +1,6 @@
-# 1.1.3
+# 2.0.0
 
-- Mark mod as server-side
+- Update to Minecraft 1.21.1
 
 # 1.1.2
 
