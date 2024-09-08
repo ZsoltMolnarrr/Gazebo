@@ -11,7 +11,7 @@ public class Default {
 
     static {
         villages = new StructurePoolConfig();
-        var weight = 5;
+        var weight = 10;
         var limit = 1;
         villages.entries = new ArrayList<>(List.of(
                 new StructurePoolConfig.Entry("minecraft:village/desert/houses", new ArrayList<>(Arrays.asList(
