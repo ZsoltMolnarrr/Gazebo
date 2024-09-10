@@ -1,3 +1,7 @@
+# 2.0.1
+
+- Lower Fabric API version requirement
+
 # 2.0.0
 
 - Update to Minecraft 1.21.1
