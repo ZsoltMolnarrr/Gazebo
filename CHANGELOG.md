@@ -1,3 +1,8 @@
+# 2.0.2
+
+- Add support for Lithostitched village structure injection
+- Update structure files for newer NBT version
+
 # 2.0.1
 
 - Lower Fabric API version requirement

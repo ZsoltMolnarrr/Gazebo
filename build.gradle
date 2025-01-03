@@ -31,6 +31,7 @@ dependencies {
     // Dependencies
     include(implementation("com.github.ZsoltMolnarrr:TinyConfig:${project.tiny_config_version}"))
     include(modImplementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}"))
+    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}")
     modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}")
 //    modImplementation(files("run/mods/dev/spell_engine-${project.spell_engine_version}.jar"))
 }
