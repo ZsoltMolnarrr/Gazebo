@@ -12,7 +12,7 @@
 			"modid": "gazebo"
 		}
 	],
-	"template_pool": "minecraft:village/plains/houses",
+	"template_pools": [ "minecraft:village/plains/houses" ],
 	"elements": [
 		{
 			"weight": 10,

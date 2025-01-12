@@ -1,3 +1,7 @@
+# 2.0.3
+
+- Support Lithostitched v1.4
+
 # 2.0.2
 
 - Add support for Lithostitched village structure injection
