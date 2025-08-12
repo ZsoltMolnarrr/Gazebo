@@ -1,3 +1,7 @@
+# 2.0.4
+
+- Built in compatibility with Repurposed Structures #2, thanks TelepathicGrunt
+
 # 2.0.3
 
 - Support Lithostitched v1.4
