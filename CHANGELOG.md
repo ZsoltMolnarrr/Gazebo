@@ -1,3 +1,7 @@
+# 2.0.5
+
+- Fix infested village structure
+
 # 2.0.4
 
 - Built in compatibility with Repurposed Structures #2, thanks TelepathicGrunt
