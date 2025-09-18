@@ -1,17 +1,17 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+issueTrackerURL = "https://github.com/ZsoltMolnarrr/Gazebo/issues"
+license = "All Rights Reserved"
 
 [[mods]]
 modId = "gazebo"
 version = "${version}"
-displayName = "Gazebo"
-authors = "Me!"
+displayName = "Gazebos (RPG Series)"
+authors = "Daedelus"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Find gazebos in villages, hosting small spell libraries.
 '''
-#logoFile = ""
+logoFile = "icon.png"
 
 [[dependencies.gazebo]]
 modId = "neoforge"
@@ -24,6 +24,20 @@ side = "BOTH"
 modId = "minecraft"
 type = "required"
 versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.gazebo]]
+modId = "spell_engine"
+type = "required"
+versionRange = "*"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.gazebo]]
+modId = "structure_pool_api"
+type = "required"
+versionRange = "*"
 ordering = "NONE"
 side = "BOTH"
 
