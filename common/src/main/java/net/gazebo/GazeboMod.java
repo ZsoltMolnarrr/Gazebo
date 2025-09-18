@@ -2,12 +2,11 @@ package net.gazebo;
 
 import net.fabric_extras.structure_pool.api.StructurePoolAPI;
 import net.fabric_extras.structure_pool.api.StructurePoolConfig;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.gazebo.config.Default;
-import net.tinyconfig.ConfigManager;
+import net.tiny_config.ConfigManager;
 
-public class GazeboMod implements ModInitializer {
+public class GazeboMod {
     public static final String ID = "gazebo";
 
     public static ConfigManager<StructurePoolConfig> villagesConfig = new ConfigManager<>
@@ -16,8 +15,8 @@ public class GazeboMod implements ModInitializer {
             .setDirectory(ID)
             .sanitize(true)
             .build();
-    @Override
-    public void onInitialize() {
+
+    public static void init() {
         villagesConfig.refresh();
         if (!FabricLoader.getInstance().isModLoaded("lithostitched")) {
             // Only inject the village if the Lithostitched is not present

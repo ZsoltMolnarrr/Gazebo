@@ -1,3 +1,7 @@
+# 2.1.0
+
+- Migrate to Architectury
+
 # 2.0.5
 
 - Fix infested village structure
