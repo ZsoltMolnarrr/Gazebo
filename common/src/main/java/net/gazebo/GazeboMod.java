@@ -2,7 +2,6 @@ package net.gazebo;
 
 import net.fabric_extras.structure_pool.api.StructurePoolAPI;
 import net.fabric_extras.structure_pool.api.StructurePoolConfig;
-import net.fabricmc.loader.api.FabricLoader;
 import net.gazebo.config.Default;
 import net.tiny_config.ConfigManager;
 
@@ -18,7 +17,7 @@ public class GazeboMod {
 
     public static void init() {
         villagesConfig.refresh();
-        if (!FabricLoader.getInstance().isModLoaded("lithostitched")) {
+        if (!Platform.util().isModLoaded("lithostitched")) {
             // Only inject the village if the Lithostitched is not present
             StructurePoolAPI.injectAll(villagesConfig.value);
         }

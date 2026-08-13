@@ -1,3 +1,7 @@
+# 2.2.0
+
+- Remove FFAPI for NeoForge
+
 # 2.1.0
 
 - Migrate to Architectury
