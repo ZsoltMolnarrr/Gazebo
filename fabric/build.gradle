@@ -67,7 +67,7 @@ dependencies {
 
     modImplementation("dev.kosmx.player-anim:player-animation-lib-${platform}:${project.player_anim_version}")
     modImplementation("me.shedaniel.cloth:cloth-config-${platform}:${project.cloth_config_version}")
-    modImplementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}")
+    include(modImplementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}"))
 
     // Trinkets
     // Trinkets: Modrinth Maven serves minimal POMs (no transitive deps), which breaks
@@ -83,8 +83,8 @@ dependencies {
 //    modImplementation("net.foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}")
     modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
 //    modImplementation("net.spell_power:spell_power-${platform}:${project.spell_power_version}")
-    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
-//    modImplementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}")
+    // modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
+    modImplementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}")
 }
 
 processResources {
