@@ -35,19 +35,15 @@ configurations {
 }
 
 repositories {
-    maven { url 'https://maven.fabricmc.net' }
-    maven { url 'https://maven.kosmx.dev/' }
-    maven { url 'https://maven.shedaniel.me/' }
+    maven { url = 'https://maven.fabricmc.net' }
+    maven { url = 'https://repo.redlance.org/public' } // PAL (Player Animation Library), via SpellEngine
+    maven { url = 'https://maven.shedaniel.me/' }
     maven {
         name = 'Modrinth'
         url = 'https://api.modrinth.com/maven'
         content {
             includeGroup 'maven.modrinth'
         }
-    }
-    maven {
-        name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/"
     }
     maven {
         name = "Ladysnake Libs"
@@ -63,26 +59,20 @@ dependencies {
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 
-    modImplementation("dev.kosmx.player-anim:player-animation-lib-${platform}:${project.player_anim_version}")
-    modImplementation("me.shedaniel.cloth:cloth-config-${platform}:${project.cloth_config_version}")
     include(modImplementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}"))
 
-    // Trinkets
-    // Trinkets: Modrinth Maven serves minimal POMs (no transitive deps), which breaks
-    // local runClient. Resolve from dev.emi (TerraformersMC) for local dev to get the
-    // full transitive graph; use Modrinth in CI (TerraformersMC has been unreliable there).
-    if (System.getenv("CI")) {
-        modImplementation("maven.modrinth:trinkets:${project.trinkets_version}")
-    } else {
-        modImplementation("dev.emi:trinkets:${project.trinkets_version}")
-    }
+//    modImplementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
+    modImplementation("net.foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}")
+//    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
+    modImplementation("net.spell_power:spell_power-${platform}:${project.spell_power_version}")
 
-    modImplementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
-//    modImplementation("net.foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}")
-    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
-//    modImplementation("net.spell_power:spell_power-${platform}:${project.spell_power_version}")
-    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
-//    modImplementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}")
+    // SpellEngine: data-only (the `spell_engine:spell_binding` block inside the structure NBTs),
+    // but a HARD dependency of the shipped mod, so the dev runtime needs it -- and it must stay
+    // TRANSITIVE so SpellEngine's own hard deps (PAL, Cloth Config, Trinkets Updated + Cardinal
+    // Components) are on the classpath too, or mod resolution fails before the game starts
+    // (LESSONS 4.45). That is why Gazebo declares none of those itself.
+//    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
+    modImplementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}")
 }
 
 processResources {
@@ -107,12 +97,7 @@ remapJar {
 // `build` — with none of the tokens present — is completely unaffected.
 def releaseTypeName = (project.findProperty('release_type') ?: 'beta').toString()
 
-// Convenience alias: build + publish to every configured destination in one go.
-// CI does NOT use this -- `publish.yml` invokes `:fabric:build` plus an explicit subset of
-// the plugin's per-destination tasks (`publishCurseforge` / `publishModrinth` /
-// `publishGithub`), so a release can target only some platforms. Keep that in mind when
-// changing this alias: it is now a local/manual convenience, not the CI entry point.
-// The plugin's own aggregate task is `publishMods` (plural).
+// Local convenience alias -- CI invokes the per-destination publish tasks directly.
 tasks.register("publishMod") {
     dependsOn(build)
     finalizedBy(tasks.named("publishMods"))
@@ -140,7 +125,6 @@ publishMods {
     }
 
     modrinth {
-        // Modrinth side metadata -- without it the version publishes as "Unknown". Structures are generated server-side.
         environment = me.modmuss50.mpp.platforms.modrinth.ModrinthEnvironment.SERVER_ONLY
         projectId = providers.environmentVariable("MODRINTH_PROJECT_RAW_ID")
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
@@ -162,14 +146,8 @@ publishMods {
     }
 }
 
-// The GitHub release is the *seal* on a successful publish, so it must run LAST: if a mod
-// host upload fails (e.g. a CurseForge 500), Gradle aborts the build before the release is
-// created, so there is never a green GitHub release pointing at a half-published version.
-// `mustRunAfter` is an ordering rule ONLY -- it does not pull the referenced tasks into the
-// graph. A Modrinth-only run therefore still works and simply ignores the CurseForge rule.
-// This matters because command-line task order is NOT an execution-order guarantee.
-// NOTE: must sit AFTER the `publishMods` block -- the plugin registers one task per
-// destination while that block is evaluated, so these names do not exist before it.
+// GitHub release last: a failed mod upload aborts the build before the release exists.
+// Ordering only -- unselected tasks are ignored. Must sit after the publishMods block.
 tasks.named("publishGithub") {
     mustRunAfter(tasks.named("publishCurseforge"), tasks.named("publishModrinth"))
 }
