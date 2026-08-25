@@ -61,6 +61,10 @@ dependencies {
 
     include(modImplementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}"))
 
+    // Pinned only to satisfy SpellEngine: it is published against PAL 1.1.4 but declares
+    // `player_animation_library [1.1.10,)`, so the transitive version is rejected at load time.
+    modImplementation("com.zigythebird.playeranim:PlayerAnimationLibFabric:${project.player_anim_version}")
+
 //    modImplementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
     modImplementation("net.foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}")
 //    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
