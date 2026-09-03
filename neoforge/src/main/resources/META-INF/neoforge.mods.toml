@@ -11,12 +11,12 @@ authors = "Daedelus"
 description = '''
 Find gazebos in villages, hosting small spell libraries.
 '''
-logoFile = "icon.png"
+iconFile = "icon.png"
 
 [[dependencies.gazebo]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.1,)"
+versionRange = "[26.2,)"
 ordering = "NONE"
 side = "BOTH"
 
