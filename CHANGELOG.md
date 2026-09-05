@@ -1,5 +1,6 @@
 # 2.2.0
 
+- Updated for Minecraft 26.1.2 (Java 25)
 - Remove FFAPI for NeoForge
 
 # 2.1.0

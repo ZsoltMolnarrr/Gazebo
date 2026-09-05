@@ -28,10 +28,10 @@ dependencies {
 
     implementation("maven.modrinth:tiny-config:${project.tiny_config_version}-${platform}")
 
-//    modImplementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
     implementation("net.rpg_foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}")
-//    modImplementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
+//    implementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
     implementation("net.spell_power:spell_power-${platform}:${project.spell_power_version}")
+//    implementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
 
     // SpellEngine is a DATA-only dependency (the `spell_engine:spell_binding` block inside the
     // structure NBTs). No common Java file references it, so it is declared on the platform

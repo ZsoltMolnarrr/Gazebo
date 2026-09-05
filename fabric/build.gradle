@@ -64,18 +64,20 @@ dependencies {
     // have that version on the classpath regardless of what conflict resolution picks transitively.
     implementation("com.zigythebird.playeranim:PlayerAnimationLibFabric:${project.player_anim_version}")
 
-//    implementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
     implementation("net.rpg_foundation:structure_pool_api-${platform}:${project.structure_pool_api_version}")
-//    implementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
+//    implementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-${platform}")
     implementation("net.spell_power:spell_power-${platform}:${project.spell_power_version}")
+//    implementation("maven.modrinth:spell-power:${project.spell_power_version}-${platform}")
 
     // SpellEngine: data-only (the `spell_engine:spell_binding` block inside the structure NBTs),
-    // but a HARD dependency of the shipped mod, so the dev runtime needs it -- and it must stay
-    // TRANSITIVE so SpellEngine's own hard deps (PAL, Cloth Config, TinyConfig, SpellPower,
-    // RangedWeaponAPI, ModMenu, Trinkets Updated) are on the classpath too, or mod resolution
-    // fails before the game starts (LESSONS 4.45). That is why Gazebo declares none of those itself.
-//    implementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
+    // but a HARD dependency of the shipped mod, so the dev runtime needs it.
+    // NB: the Modrinth artifact carries no pom, so nothing comes along transitively. SpellEngine's
+    // own hard deps that Gazebo does not declare itself (Cloth Config, ModMenu, Trinkets Updated, RangedWeaponAPI)
+    // are therefore absent from the dev runtime, and `runClient` fails mod resolution before the
+    // game starts (LESSONS 4.45). Compilation and the shipped jar are unaffected. Switch to the
+    // commented mavenLocal line below (whose pom IS transitive) to boot the dev runtime.
     implementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}")
+//    implementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
 }
 
 processResources {
