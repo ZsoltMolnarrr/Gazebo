@@ -1,0 +1,41 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/ZsoltMolnarrr/Gazebo/issues"
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "gazebo"
+version = "${version}"
+displayName = "Gazebos (RPG Series)"
+authors = "Daedelus"
+description = '''
+Find gazebos in villages, hosting small spell libraries.
+'''
+logoFile = "icon.png"
+
+[[dependencies.gazebo]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.gazebo]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+# The gazebo structures place a `spell_engine:spell_binding` block and are looted from
+# `gazebo:chests/gazebo`, so SpellEngine stays a hard dependency on both loaders.
+[[dependencies.gazebo]]
+modId = "spell_engine"
+mandatory = true
+versionRange = "[1.10,)"
+ordering = "NONE"
+side = "BOTH"
+
+# StructurePoolAPI is Fabric-only on 1.20.1: injecting the gazebo into *vanilla* villages is a
+# Fabric-only feature here. On Forge the data-driven paths (Lithostitched worldgen modifiers,
+# Repurposed Structures pool additions) still place it, so there is no dependency block for it.

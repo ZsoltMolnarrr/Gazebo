@@ -1,3 +1,9 @@
+# 2.2.0.001
+
+- Port to Minecraft 1.20.1 (Fabric + Forge 47)
+- Village gazebo structures restored from the legacy 1.20.1 exports
+- Vanilla-village injection (StructurePoolAPI) is Fabric-only on this line; on Forge the gazebo is placed by Lithostitched / Repurposed Structures
+
 # 2.2.0
 
 - Remove FFAPI for NeoForge
