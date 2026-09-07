@@ -22,9 +22,12 @@ dependencies {
     // Ecosystem libraries from mavenLocal (published by their 1.20.1-modern ports).
     modImplementation("net.tiny_config:tiny_config-${platform}:${rootProject.tiny_config_version}")
 
-    // StructurePoolAPI is NOT on the common classpath: the only 1.20.1 artifact is Fabric-only, so
-    // both the API calls and the `config/gazebo/villages.json` config live in the fabric module,
-    // behind the `net.gazebo.village.VillageStructures` seam.
+    // StructurePoolAPI 1.2.1+ ships a Forge artifact too, and its `injectAll` touches no loader API,
+    // so the village injection and the `config/gazebo/villages.json` config live here in `common`.
+    // The `-common` artifact carries the whole API surface and no loader dependency. NOT JiJ'd: it is
+    // a standalone library mod the player installs.
+    modImplementation("net.foundation:structure_pool_api-common:${rootProject.structure_pool_api_version}")
+
     // SpellEngine is a pure *data* dependency here (the structures place `spell_engine:spell_binding`),
-    // so it is not on the compile classpath either.
+    // so it is not on the compile classpath.
 }
