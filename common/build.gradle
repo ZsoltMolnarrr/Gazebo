@@ -8,6 +8,14 @@ def platform = "fabric";
 repositories {
     maven { url 'https://maven.fabricmc.net' }
 
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
+
     mavenLocal()
 }
 
@@ -19,14 +27,14 @@ dependencies {
     // No Fabric API in common: there is no Forgified Fabric API on the 1.20.1 line, so loader API
     // usage stays in the platform modules (fabric/ and forge/).
 
-    // Ecosystem libraries from mavenLocal (published by their 1.20.1-modern ports).
-    modImplementation("net.tiny_config:tiny_config-${platform}:${rootProject.tiny_config_version}")
+    // Ecosystem libraries from the Modrinth maven.
+    modImplementation("maven.modrinth:tiny-config:${rootProject.tiny_config_version}-${platform}")
 
     // StructurePoolAPI 1.2.1+ ships a Forge artifact too, and its `injectAll` touches no loader API,
     // so the village injection and the `config/gazebo/villages.json` config live here in `common`.
-    // The `-common` artifact carries the whole API surface and no loader dependency. NOT JiJ'd: it is
-    // a standalone library mod the player installs.
-    modImplementation("net.foundation:structure_pool_api-common:${rootProject.structure_pool_api_version}")
+    // Modrinth serves only the per-loader jars, so `common` compiles against the `-fabric` flavour
+    // (this module's dummy platform). NOT JiJ'd: it is a standalone library mod the player installs.
+    modImplementation("maven.modrinth:structure-pool-api:${rootProject.structure_pool_api_version}-fabric")
 
     // SpellEngine is a pure *data* dependency here (the structures place `spell_engine:spell_binding`),
     // so it is not on the compile classpath.
