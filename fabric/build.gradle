@@ -72,11 +72,8 @@ dependencies {
     // NB: the Modrinth artifact carries no pom, so nothing comes along transitively. SpellEngine's
     // own hard deps that Gazebo does not declare itself (Cloth Config, ModMenu, Trinkets Updated, RangedWeaponAPI)
     // are therefore absent from the dev runtime, and `runClient` fails mod resolution before the
-    // game starts (LESSONS 4.45). Compilation and the shipped jar are unaffected. Switch to the
-    // commented mavenLocal line below (whose pom IS transitive) to boot the dev runtime.
-    // TODO 26.3: back to maven.modrinth once released
-//    implementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
-    implementation("net.spell_engine:spell_engine-${platform}:${project.spell_engine_version}")
+    // game starts (LESSONS 4.45). Compilation and the shipped jar are unaffected.
+    implementation("maven.modrinth:spell-engine:${project.spell_engine_version}-${platform}")
 }
 
 processResources {
